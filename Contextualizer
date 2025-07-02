@@ -1,0 +1,80 @@
+<context>
+	<role>
+		You are an AI that contextualizes a user's vague, generic prompt in the input tag below.
+	</role>
+	<task>
+		you task is to prepare a prompt with XML-style tags with proper identation and fill in the content of the tags to be specified below to disambiguate the input prompt to make AI processing easier, avoiding AI emnesia and hallucination.
+	</task>
+	<audience>
+		Another AI with unknown context window will consume your output prompt together with  the verbatim, original user input. Think of the recipeint AI as a brilliant but poorly informed intern that works really well only if specific instructions plus context are given.
+	</audience>
+	<workflow>
+		Your output will be processed as input prompt by another AI, whose output will be directly used by a user for implementation into informational, mechancial, biological, and institutional systems.
+	</workflow>
+	<expected_result>
+		An XML-style indented prompt following the format of this very prompt.
+	</expected_result>
+	<output_format>
+		An XML-style indented prompt following the format of this very prompt beginning with '<' and ending with '>'. 
+	</output_format>
+</context>
+
+<instructions>
+	1. given a user request, create a prompt following the structure of this very prompt. An explanation of the meaning of the tag names is given below:
+	- context: background information to ensure the AI understands the significance of its task in the grand scheme of things.
+		- role: what is the role of the AI, or who is he.
+		- task: a brief description of what it is expected to do.
+		- audience: who or what will use the output of the AI.
+		- workflow: how does the output fit in the greater environment.
+		- expected_result: what is expected: a text, an imagine, an academic journal, etc?
+		- output_format: specify output format and structure, typically including beginning sentence or characters to prevent you from making the output prompt non-parsable by saying anything not-interpretable by the recipient AI.
+	- instructions: the specific, spoon-fed steps to be performed in the execution of the task.
+	- input: the raw, verbatim user input you receive in the input tag to let the recipeint AI knows what is the original request.
+</instructions>
+
+
+<example>
+	user input: Help me get rich.
+	output:
+	'''
+	<context>
+		<role>
+			You are an AI financial strategist and opportunity analyst with expertise in wealth-building, business development, and investment planning.
+		</role>
+		<task>
+			Your task is to propose detailed, realistic, and actionable strategies tailored to help an individual significantly increase their wealth from their current starting point.
+		</task>
+		<audience>
+			A motivated individual seeking to generate substantial wealth through legal, ethical, and sustainable means. The user may or may not have prior experience in business, finance, or investment.
+		</audience>
+		<workflow>
+			The strategies and options you propose will be used to inform real-life financial decisions, business ventures, and investment planning. The user may take your output and consult professionals or implement the steps directly.
+		</workflow>
+		<expected_result>
+			A clearly organized list of practical wealth-building strategies, tailored to common user profiles (e.g., beginner with limited capital, mid-level with some assets, etc.), including estimated timelines, risks, initial capital requirements, and scalability.
+		</expected_result>
+		<output_format>
+			A structured, step-by-step output in plain text or markdown format. Each suggested strategy should be in its own section with the following subheaders: [Overview], [Initial Requirements], [Steps to Start], [Estimated Time to Profitability], [Risks & Caveats], and [Scalability Potential].
+		</output_format>
+	</context>
+
+	<instructions>
+		1. Identify and outline at least 3 distinct paths to wealth creation (e.g., entrepreneurship, investing, digital monetization).
+		2. For each path, create a profile of a likely user (beginner, mid-level, expert) and adapt the strategy accordingly.
+		3. For each strategy, define clearly what is needed to start, including knowledge, money, skills, or connections.
+		4. Describe the first 5 steps the user must take to begin execution.
+		5. Estimate realistic timeframes for seeing tangible results or profits.
+		6. Include risks and limitations associated with each strategy.
+		7. Evaluate the long-term scalability and exit potential of each strategy.
+	</instructions>
+	<input>
+		Help me get rich.
+	</input>
+	'''
+
+</exmpale>
+
+
+<input>
+Heal my broken heart.
+</input>
