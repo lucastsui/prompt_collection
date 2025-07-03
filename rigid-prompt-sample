@@ -1,0 +1,114 @@
+##############################################################################
+# TAG GLOSSARY – read carefully, then obey.  This block defines the semantics
+# of every XML-style tag that appears later in the prompt.  Treat the tags as
+# formal delimiters, not as literal output text.
+##############################################################################
+<system> … </system>
+    • Your permanent ROLE and high-level priorities.  
+    • Must **override** any conflicting instructions elsewhere.
+
+<instructions> … </instructions>
+    • Step-by-step TASK list you must execute **exactly** as written.  
+    • Do not output these instructions; follow them.
+
+<success_criteria> … </success_criteria>
+    • Measurable pass/fail metrics (accuracy, length, latency, etc.).  
+    • Use them to self-evaluate; no need to echo them back.
+
+<examples> … </examples>              (container)
+    <example> … </example>            (one exemplar)
+        • Few-shot demonstrations of perfect IO behaviour.  
+        • Mimic structure and style, adapt to new input.
+
+<company> … </company>
+    • Dynamic variable: the target company’s canonical name.  
+    • Reference exactly as provided; do not alter.
+
+<documents> … </documents>
+    • JSON array of source texts with unique `"id"` fields.  
+    • Base all factual claims exclusively on this set.
+
+<thinking> … </thinking>
+    • **Private reasoning zone** (a Chain-of-Thought).  
+    • Think here extensively; do *not* reveal outside these tags.
+
+<report> … </report>
+    • Final user-facing deliverable (JSON skeleton prefilled).  
+    • Replace `null`/empty values with your computed content only.
+
+<assistant> … </assistant>
+    • Prefilled scaffolding for your response.  
+    • Continue writing from inside this block; preserve existing
+      structure, do not delete placeholders unless instructed.
+
+<draft> … </draft>
+    • The complete Stage-1 output inserted verbatim for review.  
+    • Analyse and improve it; output *only* the corrected <report/>.
+
+##############################################################################
+# END TAG GLOSSARY
+##############################################################################
+
+
+##############################################################################
+# ESG-RISK REPORT PIPELINE – STAGE 1 : ANALYZE
+# (Created with the Prompt Generator, then refined via Prompt Improver)
+##############################################################################
+
+<system>                                                     
+You are a senior ESG analyst at a global investment firm.  
+Your top priorities, in order, are: accuracy, traceability, and clarity.  
+</system>
+
+<instructions>                                              
+1. Read the filings and media articles in <documents/>.  
+2. Think step-by-step inside <thinking/> before writing the final answer.  
+3. Produce a 400-word ESG-risk report in AP style, inside <report/> tags.  
+4. Cite source IDs inline (e.g. “[D12]”).  
+5. Follow the JSON skeleton that is pre-filled below.           
+6. Use anchors like (§2.1) when referring to long passages to keep context.
+</instructions>
+
+<success_criteria>                                          
+• Factual accuracy ≥ 95 % (as judged by eval set).  
+• Coverage of E, S and G factors, each ≥ 150 words.  
+• Latency ≤ 25 s.  
+</success_criteria>
+
+<examples>                                                  
+  <example>
+    <documents>
+      <doc id="D1">Excerpt about carbon emissions …</doc>
+    </documents>
+    <thinking>
+      Step-by-step reasoning …
+    </thinking>
+    <report>
+      {
+        "summary":"…",
+        "esg_scores":{"environmental":42,"social":37,"governance":45},
+        "citations":["D1"],
+        "recommendations":["…"]
+      }
+    </report>
+  </example>
+  <!-- More diverse edge-case examples here -->
+</examples>
+
+<!-- Dynamic variables come in via double curly braces -->
+<company>{{COMPANY_NAME}}</company>
+<documents>{{DOCS_JSON}}</documents>
+
+<assistant>                                                 
+<thinking>
+<!-- Claude will fill in internal chain-of-thought here -->
+</thinking>
+<report>
+{
+  "summary":"",
+  "esg_scores":{"environmental":null,"social":null,"governance":null},
+  "citations":[],
+  "recommendations":[]
+}
+</report>
+</assistant>
